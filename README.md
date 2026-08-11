@@ -34,8 +34,9 @@ chsh -s $(which zsh)
 ## 6) Optional: Move hostname to the left with: 
 
 ```
-sed -i -E 's/(typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=\([^)]*)context([^)]*\))/\1\2/' ~/.p10k.zsh && \
-sed -i -E 's/(typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=\()/\1context /' ~/.p10k.zsh && \
-sed -i 's/^[[:space:]]*context[[:space:]]*#[[:space:]]*user@hostname.*/  # context/' ~/.p10k.zsh && exec zsh
+grep -q "POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(.*context" ~/.p10k.zsh || \
+sed -i --follow-symlinks -E 's/(typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=\()/\1context /' ~/.p10k.zsh
+sed -i --follow-symlinks -E 's/(typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=\()(context[[:space:]]+)+/\1context /' ~/.p10k.zsh
+sed -i --follow-symlinks -E 's/^[[:space:]]*context[[:space:]]*#?[[:space:]]*user@hostname.*/    # context/' ~/.p10k.zsh
 exec zsh
 ```
