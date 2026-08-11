@@ -36,5 +36,6 @@ chsh -s $(which zsh)
 ```
 sed -i -E 's/(typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=\([^)]*)context([^)]*\))/\1\2/' ~/.p10k.zsh && \
 sed -i -E 's/(typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=\()/\1context /' ~/.p10k.zsh && \
+sed -i 's/^[[:space:]]*context[[:space:]]*#[[:space:]]*user@hostname.*/  # context/' ~/.p10k.zsh && exec zsh
 exec zsh
 ```
