@@ -21,3 +21,4 @@ export PATH=$PATH:/snap/bin
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export CDPATH=".:/home/bruno/repo:/mnt/c/Users/bruno.glecer_satello/git"
